@@ -58,7 +58,7 @@ export default function SearchBar() {
         setDateValue(newValue);
     }
     return (
-        <div className="join ">
+        <form className="join ">
             <div>
                 <input className="input join-item bg-base-100" placeholder="Destination..." />
             </div>
@@ -96,6 +96,6 @@ export default function SearchBar() {
                 <span className="indicator-item badge badge-secondary">new</span>
                 <button className="btn join-item">Search</button>
             </div>
-        </div>
+        </form>
     )
 }
