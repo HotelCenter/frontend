@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import Datepicker from 'react-tailwindcss-datepicker'
 import { DateValueType } from 'react-tailwindcss-datepicker/dist/types'
-
+import moment from 'moment'
 const DropDownFilter = () => {
     return (<>
 
@@ -48,14 +48,14 @@ export default function SearchBar() {
     const [childrenCount, setChildrenCount] = useState(0)
     const [adultsCount, setAdultsCount] = useState(1)
     const [roomsCount, setRoomsCount] = useState(1)
-    const [value, setValue] = useState<DateValueType>({
-        startDate: new Date(),
-        endDate: new Date().setMonth(11).toString()
+    const [dateValue, setDateValue] = useState<DateValueType>({
+        startDate: moment().toDate(),
+        endDate: moment().add(1, 'day').toDate()
     });
 
-    const handleValueChange = (newValue: DateValueType) => {
+    const handleDateChange = (newValue: DateValueType) => {
         console.log("newValue:", newValue);
-        setValue(newValue);
+        setDateValue(newValue);
     }
     return (
         <div className="join ">
@@ -64,8 +64,8 @@ export default function SearchBar() {
             </div>
 
             <Datepicker showShortcuts={true}
-                inputClassName='bg-base-200 border-none input join-item'
-                minDate={new Date(Date.now())} value={value} onChange={handleValueChange} />
+                inputClassName='bg-base-200 border-none input join-item text-white'
+                minDate={moment().add(-1, 'day').toDate()} value={dateValue} onChange={handleDateChange} />
             <div className="dropdown w-full">
                 <label tabIndex={0} className="btn join-item">{adultsCount} Adults | {childrenCount} Children | {roomsCount} Rooms</label>
                 <ul tabIndex={0} className="space-y-2 dropdown-content menu p-5 shadow bg-base-300 rounded-box w-60">
