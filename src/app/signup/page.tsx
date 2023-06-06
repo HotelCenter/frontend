@@ -7,7 +7,7 @@ export default function Page() {
     return (
 
         <form action={(data) => {
-            startTransition(() => signUpAction(data))
+            startTransition(async () => signUpAction(data))
         }}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>
