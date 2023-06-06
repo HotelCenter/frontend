@@ -2,23 +2,9 @@ import { getRates } from "@/utils";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
+import Link from "next/link";
 
-type HotelDataType = {
-    id: number;
-    user_id: number;
-    name: string;
-    address: string;
-    city: string;
-    postcode: string;
-    country: string;
-    phone_number: string;
-    description: string;
-    slug: string;
-    image: string;
-    rating: number;
-    created_at: string;
-    updated_at: string;
-}
+
 
 export default function HotelCard({ hotel }: { hotel: HotelDataType }) {
     const rateArr = getRates(hotel.rating)
@@ -39,7 +25,9 @@ export default function HotelCard({ hotel }: { hotel: HotelDataType }) {
                 <div className="w-full ">
                     {rateArr}
                 </div>
-                <button className="btn btn-primary">Check Availability</button>
+                <button className="btn btn-primary">
+                    <Link href={`/rooms/${hotel.slug}`}> Check Availability</Link>
+                </button>
             </div>
 
         </div>
