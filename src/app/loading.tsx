@@ -1,3 +1,3 @@
 export default function Loading() {
-    return <h1>Loading...</h1>
+    return <span className="loading loading-spinner loading-lg"></span>
 }
