@@ -20,7 +20,7 @@ export default function Home() {
     <main className='mx-6'>
       <div className='w-full h-80'>
         {/* <HotelCanvas /> */}
-        <SearchBar />
+        <SearchBar setHotels={setHotels} />
       </div>
       {isPending && <span className="loading loading-spinner loading-lg"></span>}
       <div className='grid grid-cols-3 grid-rows-3 gap-3'>
