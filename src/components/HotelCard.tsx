@@ -23,7 +23,7 @@ export default function HotelCard({ hotel }: { hotel: HotelDataType }) {
             <div className="card-actions justify-end">
 
                 <div className="w-full ">
-                    {rateArr}
+                    {rateArr.map((faIcon, i) => <FontAwesomeIcon icon={faIcon} key={i} className="text-yellow-200" />)}
                 </div>
                 <button className="btn btn-primary">
                     <Link href={`/rooms/${hotel.slug}`}> Check Availability</Link>
