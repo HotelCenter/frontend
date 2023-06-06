@@ -1,7 +1,6 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faStar } from "@fortawesome/free-regular-svg-icons"
+import { IconDefinition, faStar } from "@fortawesome/free-regular-svg-icons"
 import { faStar as faFillStar, faStarHalfStroke } from "@fortawesome/free-solid-svg-icons"
-export function getRates(rateNum: number) {
+export function getRates(rateNum: number): IconDefinition[] {
     // clamp the rate between 0 and 5
     rateNum = Math.max(Math.min(rateNum, 5), 0)
     // return only fill stars
@@ -12,15 +11,12 @@ export function getRates(rateNum: number) {
     // return only not fill stars
 
     const notFillStars = 5 - rateNum
-    const fillStar = <FontAwesomeIcon icon={faFillStar} bounce style={{ color: "#fbff00", }} />;
-    const halfStarEl = <FontAwesomeIcon icon={faStarHalfStroke} bounce style={{ color: "#fbff00", }} />;
-    const star = <FontAwesomeIcon icon={faStar} bounce style={{ color: "#fbff00", }} />;
     // put it all in array rates
-    let arrayRate: JSX.Element[] = [];
+    let arrayRate: IconDefinition[] = [];
 
-    arrayRate = arrayRate.concat(Array.from({ length: fillStars }, () => fillStar));
-    arrayRate = arrayRate.concat(Array.from({ length: halfStar }, () => halfStarEl));
-    arrayRate = arrayRate.concat(Array.from({ length: notFillStars }, () => star));
+    arrayRate = arrayRate.concat(Array.from({ length: fillStars }, () => faFillStar));
+    arrayRate = arrayRate.concat(Array.from({ length: halfStar }, () => faStarHalfStroke));
+    arrayRate = arrayRate.concat(Array.from({ length: notFillStars }, () => faStar));
 
     return arrayRate
 }
