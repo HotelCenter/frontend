@@ -12,11 +12,9 @@ export default function Home() {
   const [isPending, setTransition] = useTransition()
   const [hotels, setHotels] = useState([])
   useEffect(() => {
-    (async () => {
-      const hotels_ = await getHotels()
 
-      setTransition(() => setHotels(hotels_))
-    })()
+    setTransition(async () => setHotels(await getHotels()))
+
   }, [])
   return (
     <main className='mx-6'>
@@ -24,6 +22,7 @@ export default function Home() {
         {/* <HotelCanvas /> */}
         <SearchBar />
       </div>
+      {isPending && <span className="loading loading-spinner loading-lg"></span>}
       <div className='grid grid-cols-3 grid-rows-3 gap-3'>
         {hotels.map((hotel, i) => <HotelCard hotel={hotel} key={i} />)}
       </div>
