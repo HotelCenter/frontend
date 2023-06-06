@@ -1,5 +1,5 @@
 'use client';
-import { loginAction } from "../actions";
+import { loginAction } from "../../actions/authActions";
 import { useTransition } from "react";
 
 export default function Page() {

@@ -1,6 +1,6 @@
 'use client';
 import { useTransition } from 'react';
-import { signUpAction } from '../actions';
+import { signUpAction } from '../../actions/authActions';
 export default function Page() {
     const [isPending, startTransition] = useTransition()
 
