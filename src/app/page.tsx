@@ -10,7 +10,7 @@ const getHotels = async () => {
 }
 export default function Home() {
   const [isPending, setTransition] = useTransition()
-  const [hotels, setHotels] = useState([])
+  const [hotels, setHotels] = useState<HotelDataType[]>([])
   useEffect(() => {
 
     setTransition(async () => setHotels(await getHotels()))
