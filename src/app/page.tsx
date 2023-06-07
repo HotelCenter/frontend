@@ -24,6 +24,7 @@ export default function Home() {
       </div>
       {isPending && <span className="loading loading-spinner loading-lg"></span>}
       <div className='grid grid-cols-3 grid-rows-3 gap-3'>
+        {(!isPending && hotels.length === 0) && <h1>No Hotel available</h1>}
         {hotels.map((hotel, i) => <HotelCard hotel={hotel} key={i} />)}
       </div>
     </main>
