@@ -14,7 +14,6 @@ const getRoom = async (roomId: Number) => {
 }
 export default function Page() {
     const params = useSearchParams()
-    const [cost, setCost] = useState<number>(0)
     const [room, setRoom] = useState<RoomDataType>()
     const [reservationDetails, setReservationDetails] = useState<ReservationDataType>(null!)
     const [isPending, startTransition] = useTransition()
