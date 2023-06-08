@@ -24,12 +24,6 @@ export default function PaymentForm({ reservationDetails }: { reservationDetails
                     return_url: `${process.env.NEXT_PUBLIC_ENDPOINT}/reserve/redirect`,
                 }
             })
-            // if (confirmation_res.paymentIntent?.status === 'succeeded') {
-            //     await axios.post("/api/reservation/confirmed", {
-            //         data: { reservationDetails: reservationDetails },
-            //     });
-
-            // }
         } catch (err) {
             console.log(err)
         }

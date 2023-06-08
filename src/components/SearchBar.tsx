@@ -63,4 +63,7 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
             </div>
         </form>
     )
+
+
+
 }
