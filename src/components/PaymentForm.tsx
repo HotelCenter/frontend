@@ -24,7 +24,6 @@ export default function PaymentForm({ reservationDetails }: { reservationDetails
                     return_url: `${process.env.NEXT_PUBLIC_ENDPOINT}/reserve/redirect`,
                 }
             })
-
         } catch (err) {
             console.log(err)
         }
