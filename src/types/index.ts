@@ -28,3 +28,27 @@ type RoomDataType = {
     discount: number;
     characteristics: string;
 };
+type ReservationDataType = {
+    amount: number,
+    checkin_date: string,
+    checkout_date: string,
+    room_id: number,
+    children_count: number,
+    adult_count: number,
+    confirmed_payment?: boolean
+};
+
+type UserDataType = {
+    id: number;
+    first_name: string;
+    email: string;
+    email_verified_at: null | string;
+    created_at: string;
+    updated_at: string;
+    last_name: string;
+    address: string;
+    country: string;
+    city: string;
+    phone_number: string;
+    code_postal: string;
+}

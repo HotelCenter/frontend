@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 export default function RoomCard({ room }: { room: RoomDataType }) {
 
@@ -8,7 +9,7 @@ export default function RoomCard({ room }: { room: RoomDataType }) {
             <p>Click the button to listen on Spotiwhy app.</p>
 
             <div className="card-actions justify-end">
-                <button className="btn btn-primary">Details</button>
+                <Link href={`/reserve?room=${room.id}`}> <button className="btn btn-primary">Details</button></Link>
             </div>
         </div>
     </div>
