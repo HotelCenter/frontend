@@ -1,9 +1,8 @@
 'use client';
-import { CardElement, PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { StripeCardElement, StripeCardNumberElement } from "@stripe/stripe-js";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React from "react";
-export default function PaymentForm() {
+export default function PaymentForm({ reservationDetails }: { reservationDetails: ReservationDataType }) {
     const stripe = useStripe()
     const elements = useElements()
 
@@ -12,20 +11,25 @@ export default function PaymentForm() {
 
         try {
             if (!stripe || !elements) return null;
-            const cardElement = elements.getElement('card')
             elements.submit()
-            const { data } = await axios.post("/api/create-payment", {
-                data: { amount: 199 },
+            const { data } = await axios.post("/api/reservation/create-payment", {
+                data: { reservationDetails: reservationDetails },
             });
             const clientSecret = data
 
-            await stripe.confirmPayment({
+            const confirmation_res = await stripe.confirmPayment({
                 elements,
                 clientSecret,
                 confirmParams: {
-                    return_url: `${process.env.NEXT_PUBLIC_ENDPOINT}/reserve/confirmed`
+                    return_url: `${process.env.NEXT_PUBLIC_ENDPOINT}/reserve/redirect`,
                 }
             })
+            // if (confirmation_res.paymentIntent?.status === 'succeeded') {
+            //     await axios.post("/api/reservation/confirmed", {
+            //         data: { reservationDetails: reservationDetails },
+            //     });
+
+            // }
         } catch (err) {
             console.log(err)
         }
