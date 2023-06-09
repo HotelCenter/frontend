@@ -26,18 +26,13 @@ const getRoom = async (roomId: Number) => {
 export default function Page() {
     const params = useSearchParams()
     const [room, setRoom] = useState<RoomDataType>()
-<<<<<<< HEAD
     const [reservationDetails, setReservationDetails] = useState<ReservationDataType>(null!)
     const [isPending, startTransition] = useTransition()
     const modalRef = useRef<HTMLDialogElement>(null!)
-=======
-    const [isPending, startTransition] = useTransition()
->>>>>>> 8a50b70 (Page reserve)
     useEffect(() => {
         startTransition(async () => setRoom(await getRoom(Number(params.get('room')))))
 
     }, [])
-<<<<<<< HEAD
 
     useEffect(() => {
         console.log(reservationDetails)
@@ -66,17 +61,4 @@ export default function Page() {
     </>
 
 
-=======
-    useEffect(() => {
-        console.log(room)
-
-    }, [room])
-    return <Elements stripe={stripePromise} options={{
-        mode: 'payment',
-        currency: 'usd',
-        amount: 55
-    }}>
-        <PaymentForm />
-    </Elements>
->>>>>>> 8a50b70 (Page reserve)
 }
