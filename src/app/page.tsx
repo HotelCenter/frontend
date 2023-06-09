@@ -4,16 +4,16 @@ import HotelCanvas from '@/components/360Hotel/HotelCanvas'
 import HotelCard from '@/components/HotelCard'
 import SearchBar from '@/components/SearchBar'
 import { useEffect, useState, useTransition } from 'react'
-const getHotels = async () => {
-  const hotels_response = await fetch(`/api/hotels`)
-  return await hotels_response.json()
-}
+// const getHotels = async () => {
+//   const hotels_response = await fetch(`/api/hotels`)
+//   return await hotels_response.json()
+// }
 export default function Home() {
   const [isPending, setTransition] = useTransition()
   const [hotels, setHotels] = useState<HotelDataType[]>([])
   useEffect(() => {
 
-    setTransition(async () => setHotels(await getHotels()))
+    // setTransition(async () => setHotels(await getHotels()))
 
   }, [])
   return (
