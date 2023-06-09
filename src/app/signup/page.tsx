@@ -1,13 +1,13 @@
 'use client';
 import { useTransition } from 'react';
-import { signUpAction } from '../actions';
+import { signUpAction } from '../../actions/authActions';
 export default function Page() {
     const [isPending, startTransition] = useTransition()
 
     return (
 
         <form action={(data) => {
-            startTransition(() => signUpAction(data))
+            startTransition(async () => signUpAction(data))
         }}>
             <div className="grid gap-6 mb-6 md:grid-cols-2">
                 <div>

@@ -1,5 +1,5 @@
 'use client';
-import { loginAction } from "../actions";
+import { loginAction } from "../../actions/authActions";
 import { useTransition } from "react";
 
 export default function Page() {
@@ -8,7 +8,7 @@ export default function Page() {
     return (
 
         <form action={(data) => {
-            startTransition(() => loginAction(data))
+            startTransition(async () => loginAction(data))
         }}>
             <div className="mb-6">
                 <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
