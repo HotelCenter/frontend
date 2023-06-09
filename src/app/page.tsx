@@ -6,7 +6,7 @@ import SearchBar from '@/components/SearchBar'
 import { useEffect, useState, useTransition } from 'react'
 const getHotels = async () => {
   const hotels_response = await fetch(`/api/hotels`)
-  return await hotels_response.json()
+  return  hotels_response.json()
 }
 export default function Home() {
   const [isPending, setTransition] = useTransition()
@@ -18,10 +18,23 @@ export default function Home() {
   }, [])
   return (
     <main className='mx-6'>
-      <div className='w-full h-80'>
-        {/* <HotelCanvas /> */}
-        <SearchBar setHotels={setHotels} />
+            {(!isPending && hotels.length !== 0) &&
+
+<>
+            <div className='w-full h-96'>
+
+
+        <HotelCanvas />
+
       </div>
+
+
+
+            <SearchBar setHotels={setHotels} />
+
+</>
+}
+
       {isPending && <span className="loading loading-spinner loading-lg"></span>}
       <div className='grid grid-cols-3 grid-rows-3 gap-3'>
         {(!isPending && hotels.length === 0) && <h1>No Hotel available</h1>}
