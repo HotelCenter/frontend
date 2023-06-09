@@ -42,15 +42,8 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
                         </li>
                     </div>
                     <div className='grid grid-cols-2 items-center grid-rows-1'>
-                        <span>Children</span>
-                        <li>
-                            <input disabled={isPending} name='children' type="number" onChange={(e) => setChildrenCount(parseInt(e.target.value))} placeholder="Children" value={childrenCount} min={0} max={10} className="input input-bordered w-full max-w-xs" />
 
-                        </li>
-                    </div>
-                    <div className='grid grid-cols-2 items-center grid-rows-1'>
-
-                        <div className='flex-auto ml-0 flex'>
+                        <div className='flex-auto ml-0  flex'>
                             <div className='rounded-none bg-white self-center box-border w-full p-2'>
                                 <div className='flex relative isolate  '> {/* border border-indigo-500 */}
                                     <div className=' items-center flex flex-grow w-full'>
