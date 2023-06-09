@@ -1,4 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
+<<<<<<< HEAD
+=======
+const access_token = process.env.AUTH_TOKEN || 'access_token';
+>>>>>>> 376f0ad (api route to verify authentication and access token)
 
 export async function POST(req: NextRequest) {
     let response = NextResponse.json({ authenticated: false })
