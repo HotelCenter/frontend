@@ -3,22 +3,11 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import PaymentForm from "@/components/PaymentForm";
 import { useSearchParams } from "next/navigation";
-<<<<<<< HEAD
 import { useEffect, useRef, useState, useTransition } from "react";
 import ReserveRoomCard from "@/components/ReserveRoomCard";
 import Loading from "../loading";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
 
-=======
-import { useEffect, useState, useTransition } from "react";
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
-const options = {
-    currency: "eur",
-    amount: 1099,
-    mode: 'payment'
-
-};
->>>>>>> 8a50b70 (Page reserve)
 const getRoom = async (roomId: Number) => {
     const room_response = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}/api/rooms/${roomId}`);
     return room_response.json()
