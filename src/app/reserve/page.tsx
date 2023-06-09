@@ -14,6 +14,7 @@ const getRoom = async (roomId: Number) => {
 }
 export default function Page() {
     const params = useSearchParams()
+    const [cost, setCost] = useState<number>(0)
     const [room, setRoom] = useState<RoomDataType>()
     const [reservationDetails, setReservationDetails] = useState<ReservationDataType>(null!)
     const [isPending, startTransition] = useTransition()
@@ -22,6 +23,7 @@ export default function Page() {
         startTransition(async () => setRoom(await getRoom(Number(params.get('room')))))
 
     }, [])
+<<<<<<< HEAD
 
     useEffect(() => {
         console.log(reservationDetails)
@@ -33,20 +35,45 @@ export default function Page() {
     return <>
         <dialog id="payment_modal" ref={modalRef} className="modal">
             <div className="modal-box">
+=======
+    useEffect(() => {
+        if (room) {
+            setCost(cost)
+        }
+    }, [room])
+    if (!room || isPending) {
+        return <Loading />
+    }
+    return <>
+        <dialog id="payment_modal" ref={modalRef} className="modal">
+            <form method="dialog" className="modal-box">
+>>>>>>> 3482aaf (Configured reserve card)
                 <h3 className="font-bold text-lg">Reserve Your Room!</h3>
                 <Elements stripe={stripePromise} options={{
                     mode: 'payment',
                     currency: 'usd',
+<<<<<<< HEAD
                     amount: 100
                 }}>
                     <PaymentForm reservationDetails={reservationDetails!} />
+=======
+                    amount: 55
+                }}>
+                    <PaymentForm />
+>>>>>>> 3482aaf (Configured reserve card)
                 </Elements>
                 <div className="modal-action">
                     <button className="btn">Close</button>
                 </div>
+<<<<<<< HEAD
             </div>
         </dialog>
         <ReserveRoomCard reservationDetails={reservationDetails} setReservationDetails={setReservationDetails} modalRef={modalRef} room={room} />
+=======
+            </form>
+        </dialog>
+        <ReserveRoomCard modalRef={modalRef} cost={cost!} setCost={setCost!} room={room} />
+>>>>>>> 3482aaf (Configured reserve card)
     </>
 
 
