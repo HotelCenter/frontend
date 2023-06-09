@@ -65,7 +65,7 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
                             <div className='flex items-center'> {/* border border-indigo-500 */}
                                 <div className=' items-center flex flex-grow w-full'>
                                     <div className="dropdown w-full">
-                                        <label tabIndex={0} className="btn join-item">{adultsCount} Adults | {childrenCount} Children | {roomsCount} Rooms</label>
+                                        <label tabIndex={0} className="btn join-item w-full">{adultsCount} Adults | {childrenCount} Children | {roomsCount} Rooms</label>
                                         <ul tabIndex={0} className="space-y-2 dropdown-content menu p-5 shadow bg-base-300 rounded-box w-60">
                                             <div className='grid grid-cols-2 items-center grid-rows-1'>
                                                 <span>Adults</span>
