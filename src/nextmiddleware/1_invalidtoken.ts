@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 const access_token = process.env.AUTH_TOKEN || 'access_token';
 
-export default async function middleware(request: NextRequest) {
-    let response = NextResponse.next()
+export default async function middleware(request: NextRequest, response: NextResponse) {
     if (request.cookies.has(access_token)) {
         const auth_response = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}/api/auth`, {
             method: 'POST',
