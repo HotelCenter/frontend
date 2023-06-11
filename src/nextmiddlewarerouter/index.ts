@@ -38,7 +38,6 @@ export default async function bindM(request: NextRequest) {
                 const { default: middleware, routes } = module
                 const paths = getMiddlewarePaths(routes);
                 const regex = new RegExp(`^${paths.join('|')}$`, 'i');
-
                 if (regex.test(request.nextUrl.pathname)) {
 
                     response = await middleware(request, response);
