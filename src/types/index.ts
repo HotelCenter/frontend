@@ -52,3 +52,7 @@ type UserDataType = {
     phone_number: string;
     code_postal: string;
 }
+
+type MiddleRoutes = {
+    key: Array<any> | null | object
+}
