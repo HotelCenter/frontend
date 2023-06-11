@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import stripe from "@/lib/stripe";
-export default async function middleware(request: NextRequest) {
-    let response = NextResponse.next()
+export default async function middleware(request: NextRequest, response: NextResponse) {
     const paramsSearch = new URLSearchParams(request.nextUrl.search)
     if (paramsSearch.has('payment_intent') && paramsSearch.has('payment_intent_client_secret')) {
 
