@@ -1,5 +1,4 @@
 'use server';
-
 import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 const access_token = process.env.AUTH_TOKEN || 'access_token'
@@ -64,4 +63,5 @@ const loginAction = async (data: FormData) => {
         throw Error(await login_response.text())
     }
 }
+
 export { signUpAction, loginAction }
