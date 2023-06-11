@@ -26,6 +26,7 @@ function getMiddlewarePaths(matcher: MiddleRoutes) {
 
 export default async function bindM(request: NextRequest) {
     const files_res = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}/api/middleware`, { method: "POST" })
+    let response = NextResponse.next()
 
     const { files }: { files: string[] } = await files_res.json()
     for (const fileDir of files.sort()) {
@@ -37,21 +38,21 @@ export default async function bindM(request: NextRequest) {
                 const { default: middleware, routes } = module
                 const paths = getMiddlewarePaths(routes);
                 const regex = new RegExp(`^${paths.join('|')}$`, 'i');
-                let response = NextResponse.next()
-                console.log(paths)
+
                 if (regex.test(request.nextUrl.pathname)) {
 
-                    response = await middleware(request);
+                    response = await middleware(request, response);
                 }
-                return response
 
             }
+
         } catch (err) {
             throw Error(`${err}`)
         }
 
     }
 
+    return response
 
 
 
