@@ -19,7 +19,7 @@ export default function Navbar() {
                     <li><Link href={'/login'}>Login</Link></li>
                 </ul>
             </div>
-            <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+            <Link href={'/'} className="btn btn-ghost normal-case text-xl">HotelCenter</Link>
         </div>
         <div className="navbar-center hidden lg:flex z-10">
             <ul className="menu menu-horizontal px-1">

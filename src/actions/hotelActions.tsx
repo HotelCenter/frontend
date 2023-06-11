@@ -13,6 +13,9 @@ export const searchHotelAction = async (data: FormData) => {
     data.forEach((value, key) => {
         params.append(key, value.toString())
     })
+
     const hotels_response = await fetch(`${process.env.API_ENDPOINT}/hotels/filter?${params.toString()}`)
+    // console.log(await hotels_response.json())
+
     return hotels_response.json()
 }
