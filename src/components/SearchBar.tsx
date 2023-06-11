@@ -20,7 +20,7 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
         setDateValue(newValue);
     }
     return (
-        <div className="w-6/12 relative left-2/4 m-20" style={{ transform: "translate(-50%,30px)", width: "calc(80% - 10px)" }}>
+        <div className="w-6/12 relative left-2/4 m-20" style={{ transform: "translate(-50%,0px)", width: "calc(80% - 10px)" }}>
             <form className='m-0 p-0' action={(data) => {
                 startTransition(async () => setHotels(await searchHotelAction(data)));
             }}>

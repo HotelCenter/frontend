@@ -7,7 +7,7 @@ const getRooms = async (id: HotelDataType['slug']) => {
 export default async function Page({ params }: { params: { slug: string } }) {
 
     const rooms: RoomDataType[] = await getRooms(params.slug)
-    return <div>
+    return <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 grid-rows-3 gap-3 mx-6 2xl:mx-0 my-5">
         {rooms.map((room) => (<RoomCard room={room} key={room.id} />))}
     </div>
 }
