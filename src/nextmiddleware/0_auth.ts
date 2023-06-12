@@ -13,5 +13,4 @@ export default async function middleware(request: NextRequest, response: NextRes
 export const routes = {
     reserve: null,
     me: null,
-    admin: null
 }

@@ -6,7 +6,9 @@ export async function middleware(request: NextRequest, event: NextFetchEvent) {
     let response = NextResponse.next();
 
 
-
+    if (request.cookies.has(access_token)) {
+        request.headers.append('Authorization', `${process.env.TOKEN_TYPE} ${request.cookies.get(access_token)?.value}`)
+    }
     response = await bindM(request);
     if (request.cookies.has(access_token)) {
         response.headers.append('Authorization', `${process.env.TOKEN_TYPE} ${request.cookies.get(access_token)?.value}`)

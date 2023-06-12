@@ -1,4 +1,8 @@
 'use server';
+
+import { fetchData } from "@/utils";
+import { headers } from "next/headers";
+
 export const searchHotelAction = async (data: FormData) => {
     const checkingdates = data.get('checkingdates')?.toString().split('~')
     if (checkingdates?.length !== 2) {
@@ -14,8 +18,30 @@ export const searchHotelAction = async (data: FormData) => {
         params.append(key, value.toString())
     })
 
-    const hotels_response = await fetch(`${process.env.API_ENDPOINT}/hotels/filter?${params.toString()}`)
-    // console.log(await hotels_response.json())
+    const hotels_response = await fetchData(`${process.env.API_ENDPOINT}/hotels/filter?${params.toString()}`)
 
     return hotels_response.json()
+}
+
+export async function deleteHotel(data: FormData) {
+
+    if (headers().has('authorization')) {
+        if (data.has('hotelSlug')) {
+            const authorization = headers().get('authorization')!
+            const deleteHotel = await fetchData(`${process.env.API_ENDPOINT}/hotels/${data.get('hotelSlug')}`, {
+                method: 'DELETE',
+                headers: {
+                    authorization
+                }
+            })
+            await deleteHotel.json()
+        } else {
+            throw { unknown: true }
+
+        }
+    } else {
+        throw { notAuthorized: true }
+
+    }
+
 }
