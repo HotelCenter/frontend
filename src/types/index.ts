@@ -51,16 +51,9 @@ type UserDataType = {
     city: string;
     phone_number: string;
     code_postal: string;
-<<<<<<< HEAD
-}
-
-type MiddleRoutes = {
-    key: Array<any> | null | object
-=======
     is_admin: boolean
 }
 
 type MiddleRoutes = {
     [key: string]: object | Array<number | string> | null
->>>>>>> admin
 }
