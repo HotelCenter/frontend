@@ -1,4 +1,4 @@
-import Navbar from "@/components/navbars/profile";
+import Navbar from "@/components/navbars/secondary";
 
 export default function DashboardLayout({
     children,
@@ -9,6 +9,7 @@ export default function DashboardLayout({
         <>
 
             <Navbar />
+
             <main>
                 {children}
             </main>
