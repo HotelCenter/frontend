@@ -7,7 +7,7 @@ import React from "react";
 
 
 
-export default function HotelCard({ children, hotel }: { children: JSX.Element, hotel: HotelDataType }) {
+export default function HotelCard({ children, hotel }: { children?: JSX.Element, hotel: HotelDataType }) {
   const rateArr = getRates(hotel.rating)
   return (
     <div className="relative max-w-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden ">
