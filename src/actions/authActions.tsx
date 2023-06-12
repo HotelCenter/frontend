@@ -1,6 +1,8 @@
 'use server';
 import { redirect } from "next/navigation";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { fetchData } from "@/utils";
+import { RedirectType } from "next/dist/client/components/redirect";
 const access_token = process.env.AUTH_TOKEN || 'access_token'
 const signUpAction = async (data: FormData) => {
     const cookiesStore = cookies()
@@ -55,7 +57,7 @@ const loginAction = async (data: FormData) => {
                 expires: Date.now() + parseInt(data['expires_in']),
             })
 
-            redirect('/me')
+            redirect('/me', RedirectType.replace)
         } else {
             throw Error('Something Went Wrong')
         }
@@ -63,5 +65,18 @@ const loginAction = async (data: FormData) => {
         throw Error(await login_response.text())
     }
 }
-
+export async function logoutAction() {
+    const cookiesStore = cookies()
+    if (headers().has('authorization')) {
+        const authorization = headers().get('authorization')!
+        await fetchData(`${process.env.API_ENDPOINT}/logout`, {
+            method: 'POST',
+            headers: new Headers({
+                authorization
+            })
+        })
+        cookiesStore.delete(access_token)
+        redirect('/', RedirectType.replace)
+    }
+}
 export { signUpAction, loginAction }
