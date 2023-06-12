@@ -20,3 +20,18 @@ export function getRates(rateNum: number): IconDefinition[] {
 
     return arrayRate
 }
+export async function fetchData(input: RequestInfo | URL, init?: RequestInit | undefined): Promise<Response> {
+    const response = await fetch(input, init);
+    if (response.status > 100 || response.status < 400) {
+        return response
+    }
+    else if (response.status === 403) {
+        throw { notAuthorized: true, status: response.status }
+    } else if (response.status > 499) {
+        throw { internalError: true, status: response.status }
+    } else if (response.status === 404) {
+        throw { notFound: true, status: response.status }
+    } else {
+        throw { unknown: true, status: response.status }
+    }
+}

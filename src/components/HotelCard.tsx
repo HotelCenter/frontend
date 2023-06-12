@@ -3,16 +3,19 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
+import React from "react";
 
 
 
-export default function HotelCard({ hotel }: { hotel: HotelDataType }) {
+export default function HotelCard({ children, hotel }: { children: JSX.Element, hotel: HotelDataType }) {
   const rateArr = getRates(hotel.rating)
   return (
-    <div className="max-w-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden ">
-      <div className="2xl:flex">
-        <div className="2xl:flex-shrink-0">
-          <img className="h-48 2xl:h-96 w-full object-cover 2xl:w-56" src={`/hotels_images/${hotel.image}`} alt={hotel.name} />
+    <div className="relative max-w-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden ">
+      {children}
+
+      <div className="xl:flex">
+        <div className="xl:flex-shrink-0">
+          <img className="h-48 xl:h-96 w-full object-cover xl:w-56" src={`/hotels_images/${hotel.image}`} alt={hotel.name} />
         </div>
         <div className="flex m-1 3xl:m-4 flex-col justify-between">
           <div>
@@ -30,10 +33,13 @@ export default function HotelCard({ hotel }: { hotel: HotelDataType }) {
             </div> */}
           </div>
           <div className="mt-2 3xl:mt-6">
-            <Link href={`/rooms/${hotel.slug}`}>
-              <button className="btn btn-primary">Check</button>
-            </Link>
+            <span className="text-gray-700 ml-2">4.5</span>
           </div>
+        </div>
+        <div className="mt-6">
+          <Link href={`/rooms/${hotel.slug}`}>
+            <button className="btn btn-primary">Check</button>
+          </Link>
         </div>
       </div>
     </div>

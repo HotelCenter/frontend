@@ -19,7 +19,7 @@ export async function POST(request: NextRequest) {
                 user_id: user.id
             }
             const formData = new FormData()
-            const amount:number=Number((data.amount*100).toFixed(2))
+            const amount: number = Number((data.amount * 100).toFixed(2))
             formData.append('children_count', data['children_count'].toString())
             formData.append('amount', amount.toString())
             formData.append('adult_count', data['adult_count'].toString())
@@ -37,7 +37,6 @@ export async function POST(request: NextRequest) {
             })
 
             const reservation = await reserve_res.json()
-            console.log(reservation)
 
             const customer = await stripe.customers.create({
                 email: user.email,
@@ -49,7 +48,7 @@ export async function POST(request: NextRequest) {
             )
 
             const paymentIntent = await stripe.paymentIntents.create({
-                amount:  amount,
+                amount: amount,
                 currency: 'USD',
                 automatic_payment_methods: {
                     enabled: true,
@@ -67,7 +66,7 @@ export async function POST(request: NextRequest) {
 
             return new NextResponse(paymentIntent.client_secret, { status: 200 });
         } else {
-            throw Error('must authenticated');
+            throw Error('User must be authenticated');
 
         }
     } catch (err: any) {

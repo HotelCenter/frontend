@@ -39,14 +39,13 @@ export default async function bindM(request: NextRequest) {
                 const paths = getMiddlewarePaths(routes);
                 const regex = new RegExp(`^${paths.join('|')}$`, 'i');
                 if (regex.test(request.nextUrl.pathname)) {
-
                     response = await middleware(request, response);
                 }
 
             }
 
-        } catch (err) {
-            throw Error(`${err}`)
+        } catch (err: any) {
+            throw Error(err)
         }
 
     }
