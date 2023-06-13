@@ -34,8 +34,10 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
                     </svg>
                   </span>
                   <input
+                    disabled={isPending}
                     className="input join-item bg-base-100 border-l-none text-[14px] font-bold leading-5 w-full"
                     placeholder="Destination..."
+                    name='destination'
                   />
                   {/* <div className="absolute inset-0 border-none hover:border-black rounded-lg hover:ring-2 ring-gray-300">
                     <button className="btn btn-primary">Search</button>
@@ -61,7 +63,7 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
                   </span>
                     <Datepicker showShortcuts={true} onChange={handleDateChange}
                       inputClassName='btn border-none input w-full join-item'
-                      minDate={new Date(Date.now())} value={dateValue} inputName='checkingdates' />
+                      minDate={new Date(Date.now())} value={dateValue} inputName='checkingdates' disabled={isPending} />
                   </div>
                   </div>
                   {/* <div className="absolute inset-0 border-none hover:border-black rounded-lg hover:ring-2 ring-gray-300">
@@ -92,20 +94,20 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
                         <div className='grid grid-cols-2 items-center grid-rows-1 '>
                           <span>Adults</span>
                           <li>
-                            <input name='adults' type="number" onChange={(e) => setAdultsCount(parseInt(e.target.value))} placeholder="Adults" value={adultsCount} min={1} max={100} className="input input-bordered w-full max-w-xs" />
+                            <input disabled={isPending} name='adults' type="number" onChange={(e) => setAdultsCount(parseInt(e.target.value))} placeholder="Adults" value={adultsCount} min={1} max={100} className="input input-bordered w-full max-w-xs" />
                           </li>
                         </div>
                         <div className='grid grid-cols-2 items-center grid-rows-1'>
                           <span>Children</span>
                           <li>
-                            <input name='children' type="number" onChange={(e) => setChildrenCount(parseInt(e.target.value))} placeholder="Children" value={childrenCount} min={0} max={10} className="input input-bordered w-full max-w-xs" />
+                            <input disabled={isPending} name='children' type="number" onChange={(e) => setChildrenCount(parseInt(e.target.value))} placeholder="Children" value={childrenCount} min={0} max={10} className="input input-bordered w-full max-w-xs" />
 
                           </li>
                         </div>
                         <div className='grid grid-cols-2 items-center grid-rows-1'>
                           <span>Rooms</span>
                           <li>
-                            <input name="rooms" type="number" placeholder="Rooms" onChange={(e) => setRoomsCount(parseInt(e.target.value))} value={roomsCount} min={1} max={100} className="input input-bordered w-full max-w-xs" />
+                            <input disabled={isPending} name="rooms" type="number" placeholder="Rooms" onChange={(e) => setRoomsCount(parseInt(e.target.value))} value={roomsCount} min={1} max={100} className="input input-bordered w-full max-w-xs" />
 
                           </li>
                         </div>
