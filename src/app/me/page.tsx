@@ -35,7 +35,7 @@ export default async function Page() {
           </h2>
           <p className="mt-2 text-gray-600">{user.email}</p>
           <p className="mt-2 text-bold text-info">
-            {user.is_admin ? 'Admin' : 'User'}
+            {user.is_admin ? <Link href={'/admin'}>Admin</Link> : 'User'}
           </p>
         </div>
         <div className="mt-8">
