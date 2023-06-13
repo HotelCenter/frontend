@@ -3,7 +3,7 @@
 import HotelCanvas from '@/components/360Hotel/HotelCanvas'
 import HotelCard from '@/components/HotelCard'
 import SearchBar from '@/components/SearchBar'
-import Navbar from '@/components/navbars/Navbar'
+import Navbar from '@/components/navbars/main'
 import { useEffect, useState, useTransition } from 'react'
 const getHotels = async () => {
   const hotels_response = await fetch(`/api/hotels`)
