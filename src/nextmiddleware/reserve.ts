@@ -3,7 +3,6 @@ import stripe from "@/lib/stripe";
 export default async function middleware(request: NextRequest, response: NextResponse) {
     const paramsSearch = new URLSearchParams(request.nextUrl.search)
     if (paramsSearch.has('payment_intent') && paramsSearch.has('payment_intent_client_secret')) {
-
         const payment = await stripe.paymentIntents.retrieve(paramsSearch.get('payment_intent')!)
         if (payment.status === "succeeded") {
             const formData = new FormData()
