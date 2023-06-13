@@ -33,9 +33,9 @@ export default function HotelCard({ children, hotel }: { children?: JSX.Element,
               <FontAwesomeIcon icon={faLocationDot} /> <span> {hotel.city} , {hotel.country}</span>
             </div> */}
           </div>
-          <div className="mt-2 3xl:mt-6">
+          {/* <div className="mt-2 3xl:mt-6">
             <span className="text-gray-700 ml-2">4.5</span>
-          </div>
+          </div> */}
         </div>
         <div className="mt-6">
           <Link href={`/rooms/${hotel.slug}`}>
