@@ -19,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" >
       <body className={`${inter.className} min-h-screen flex flex-col`} >
-        {children}
+        <div className='mb-12'>
+          {children}
+        </div>
         <Footer />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
       </body>
