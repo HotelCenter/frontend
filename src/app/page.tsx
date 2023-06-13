@@ -12,36 +12,30 @@ const getHotels = async () => {
 export default function Home() {
   const [isPending, setTransition] = useTransition()
   const [hotels, setHotels] = useState<HotelDataType[]>([])
+  const [isLoading, setLoading] = useState(true)
+  useEffect(() => {
+    setLoading(isPending)
+  }, [isPending])
   useEffect(() => {
 
     setTransition(async () => setHotels(await getHotels()))
-
+    setLoading(true)
   }, [])
+
   return (
     <>
       <Navbar />
 
       <main>
         <div className='container mx-auto'>
-          {(!isPending && hotels.length !== 0) &&
-
-            <>
-              <div className='w-full h-96'>
+          <div className='w-full h-96'>
 
 
-                <HotelCanvas />
+            <HotelCanvas />
 
-              </div>
-
-
-
-              <SearchBar setHotels={setHotels} />
-
-            </>
-          }
-
-          {isPending && <span className="loading loading-spinner loading-lg"></span>}
-          {(!isPending && hotels.length === 0) &&
+          </div>
+          {!isLoading && <SearchBar setHotels={setHotels} />}
+          {(!isLoading && hotels.length === 0) &&
             <div className="flex items-center justify-center h-screen">
               <div className="bg-gray-200 p-6 rounded-lg shadow-lg">
                 <h1 className="text-indigo-500 text-2xl text-center font-bold mb-4">No Hotel available</h1>
