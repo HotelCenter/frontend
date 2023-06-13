@@ -22,7 +22,7 @@ export default function SearchBar({ setHotels }: { setHotels: Dispatch<SetStateA
   return (
       <div className="max-w-[1100px] mx-auto">
         <div className="relative block">
-          <form className="block md:flex flex-wrap justify-center p-10 bg-gray-300 text-center shadow-md"action={(data) => {
+          <form className="block md:flex flex-wrap justify-center p-10  text-center "action={(data) => {
           startTransition(async () => setHotels(await searchHotelAction(data)));
           }}>
             <div className="px-0 md:px-2 w-full md:w-[24%] sm:mb-0">

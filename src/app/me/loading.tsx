@@ -1,5 +1,5 @@
 export default function Loading() {
-    return <div className="flex items-center justify-center h-screen">
+    return <div className="absolute items-center justify-center h-screen">
     <div className="flex flex-col items-center">
       <svg className="animate-spin h-10 w-10 text-indigo-500 mb-4" viewBox="0 0 24 24">
         <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
