@@ -10,13 +10,14 @@ import React from "react";
 export default function HotelCard({ children, hotel }: { children?: JSX.Element, hotel: HotelDataType }) {
   const rateArr = getRates(hotel.rating)
   return (
-    <div className="relative max-w-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden ">
-      {children}
-
-      <div className="xl:flex">
-        <div className="xl:flex-shrink-0">
-          <img className="h-48 xl:h-96 w-full object-cover xl:w-56" src={`/hotels_images/${hotel.image}`} alt={hotel.name} />
-        </div>
+    <div className="max-w-xl mx-auto bg-white rounded-xl shadow-md overflow-hidden w-full xl:w-96 p-2">
+      <div className="block"> {/*2xl:flex*/}
+         {/*2xl:flex-shrink-0*/}
+         <figure>
+          <div className="p-2 bg-slate-200 rounded-xl">
+            <Image className="rounded-xl" width={512} height={512} src={`/hotels_images/${hotel.image}`} alt={hotel.name} />
+          </div>
+        </figure> {/*h-48  w-full object-cover 2xl:h-96 2xl:w-56*/}
         <div className="flex m-1 3xl:m-4 flex-col justify-between">
           <div>
             <h2 className="uppercase tracking-wide text-md text-indigo-500 font-semibold">{hotel.name}</h2>
