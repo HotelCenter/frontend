@@ -16,19 +16,19 @@ export default function RoomCard({ room }: { room: RoomDataType }) {
           <div id="default-carousel" className="relative w-full" data-carousel="slide">
     <div className="relative h-56 overflow-hidden rounded-lg md:h-96">
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/hotels_images/1.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img width={512} height={512} src="/hotels_images/1.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/hotels_images/2.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img width={512} height={512} src="/hotels_images/2.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/hotels_images/3.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img width={512} height={512} src="/hotels_images/3.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/hotels_images/4.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img width={512} height={512} src="/hotels_images/4.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
         <div className="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/hotels_images/5.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
+            <img width={512} height={512} src="/hotels_images/5.png" className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..."/>
         </div>
     </div>
     <div className="absolute z-30 flex space-x-3 -translate-x-1/2 bottom-5 left-1/2">
