@@ -51,30 +51,25 @@ export default function Page() {
 
                             <Accordion.Panel key={i}>
                                 <Accordion.Title>
-                                    {hotel.name}
+                                    <div>
+                                        {hotel.name}
+                                    </div>
+                                    <div className='flex p-2 space-x-2'>
+                                        <Button color={'warning'}>
+                                            <FontAwesomeIcon icon={faEdit} />  Update
+                                        </Button>
+                                        <Button color={'red'} onClick={() => {
+                                            props.setSelectedHotel(hotel)
+                                            props.setOpenModal('dismissible')
+                                        }}>
+                                            <FontAwesomeIcon icon={faHotel} />- Delete
+                                        </Button>
+                                    </div>
                                 </Accordion.Title>
                                 <Accordion.Content>
                                     <HotelCard hotel={hotel} >
-                                        <div className='absolute right-0 flex justify-end'>
-                                            <Dropdown
-                                                label={<FontAwesomeIcon icon={faListDots} />}
-                                                color={'white hover:gray'}
-                                            >
-                                                <div className='p-2 space-y-2'>
-                                                    <Button color={'warning'}>
-                                                        <FontAwesomeIcon icon={faEdit} />  Update
-                                                    </Button>
-                                                    <Button color={'red'} onClick={() => {
-                                                        props.setSelectedHotel(hotel)
-                                                        props.setOpenModal('dismissible')
-                                                    }}>
-                                                        <FontAwesomeIcon icon={faHotel} />- Delete
-                                                    </Button>
-                                                </div>
-                                            </Dropdown>
-                                        </div>
+                                        <span></span>
                                     </HotelCard>
-
 
 
                                 </Accordion.Content>
