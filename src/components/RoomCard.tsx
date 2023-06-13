@@ -1,4 +1,9 @@
+'use client';
 import Link from "next/link";
+import { Carousel } from 'flowbite-react';
+
+
+
 
 export default function RoomCard({ room }: { room: RoomDataType }) {
 
@@ -6,8 +11,29 @@ export default function RoomCard({ room }: { room: RoomDataType }) {
 <div className='items-center justify-center'>
     <div className='w-full max-w-md  mx-auto bg-white rounded-3xl shadow-xl overflow-hidden'>
         <div className='max-w-md mx-auto'>
-          <div className='h-[236px]' style={{backgroundImage:'url(`/hotels_images/2.png`);background-size:cover;background-position:center'}}>
-           </div>
+          {/* <div className='h-[236px]' style={{backgroundImage:'url(`/hotels_images/2.png`);background-size:cover;background-position:center'}}> */}
+          <Carousel>
+      <img
+        alt="..."
+        src="https://flowbite.com/docs/images/carousel/carousel-1.svg"
+      />
+      <img
+        alt="..."
+        src="https://flowbite.com/docs/images/carousel/carousel-2.svg"
+      />
+      <img
+        alt="..."
+        src="https://flowbite.com/docs/images/carousel/carousel-3.svg"
+      />
+      <img
+        alt="..."
+        src="https://flowbite.com/docs/images/carousel/carousel-4.svg"
+      />
+      <img
+        alt="..."
+        src="https://flowbite.com/docs/images/carousel/carousel-5.svg"
+      />
+    </Carousel>           </div>
           <div className='p-4 sm:p-6'>
             <p className='font-bold text-gray-700 text-[22px] leading-7 mb-1'>hotel name</p>
             <div className='flex flex-row'>
@@ -25,6 +51,6 @@ export default function RoomCard({ room }: { room: RoomDataType }) {
           </div>
         </div>
     </div>
-</div>
+// </div>
 )
 }
