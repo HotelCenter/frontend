@@ -45,3 +45,47 @@ export async function deleteHotel(data: FormData) {
     }
 
 }
+
+export async function updateHotel(data: FormData) {
+    if (headers().has('authorization')) {
+        if (data.has('hotelSlug')) {
+
+            const authorization = headers().get('authorization')!
+            let dataInJson = {}
+            data.forEach((value, key) => {
+                if (key === 'image') {
+                    const file = value as File
+                    if (file.name !== 'undefined') {
+                        dataInJson = { ...dataInJson, image: file.name }
+
+                    }
+                } else if (key === 'rating') {
+                    dataInJson = { ...dataInJson, [key as string]: Number(value) }
+
+                } else {
+                    if (value) {
+                        dataInJson = { ...dataInJson, [key as string]: value }
+
+                    }
+                }
+            })
+            return (await fetchData(`${process.env.API_ENDPOINT}/hotels/${data.get('hotelSlug')}`, {
+                method: 'PUT',
+                headers: {
+                    authorization,
+                    'Content-Type': 'application/json',
+                    mode: 'cors'
+                },
+                body: JSON.stringify(dataInJson)
+            })).json()
+        } else {
+            throw { unknown: true }
+
+        }
+    } else {
+        throw { notAuthorized: true }
+
+    }
+
+}
+
